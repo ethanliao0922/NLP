@@ -125,7 +125,7 @@ def cal_perplexity(validation_set, bigram_probabilities, unigram_counts, m, unig
     return math.exp(log_sum / n)
 
 if __name__ == "__main__":
-    train = read_file("UTD/24Fall/NLP/A1/A1_DATASET/train.txt")
+    train = read_file("train.txt")
     tokenize_train = tokenize(train)
     uni_cnt, bi_cnt = count_amt(tokenize_train)
 
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     li_uni_prob, li_bi_prob = linear_interpolation(uni_cnt_with_ukn, bi_cnt_with_ukn, lambda1, lambda2)
 
     # validation
-    val = read_file("UTD/24Fall/NLP/A1/A1_DATASET/val.txt")
+    val = read_file("val.txt")
     val_with_unk = replace_unseen_words(tokenize(val), uni_cnt, 2)
     
     s1_perplexity_value = cal_perplexity(val_with_unk, add_k_bi_prob, uni_cnt_with_ukn, 1, add_k_uni_prob, lambda1, lambda2)
